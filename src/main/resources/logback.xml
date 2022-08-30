@@ -4,23 +4,23 @@
     <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>
-                %d{yyyy-MM-dd HH:mm:ss} %highlight(%-5level) - %highlight( %msg%n)
+                %d{yyyy-MM-dd HH:mm:ss} %yellow([%thread]) %highlight(%-5level) - %magenta(%msg%n)
             </Pattern>
         </layout>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${DEV_HOME}/timeBasedlogFile_${bySecond}.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- daily rollover -->
             <fileNamePattern>${DEV_HOME}/timeBasedlogFile.%d{yyyy-MM-dd-HH-mm}.zip</fileNamePattern>
             <maxHistory>3</maxHistory>
             <totalSizeCap>30KB</totalSizeCap>
         </rollingPolicy>
-
+        <withJansi>true</withJansi>
         <encoder>
-            <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
+            <pattern>%relative [%thread] %-5level %cyan(%logger{35}) - %msg%n</pattern>
         </encoder>
     </appender>
 
