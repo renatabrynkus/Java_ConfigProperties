@@ -20,7 +20,7 @@
         </rollingPolicy>
         <withJansi>true</withJansi>
         <encoder>
-            <pattern>%relative [%thread] %-5level %cyan(%logger{35}) - %msg%n</pattern>
+            <pattern>%relative [%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
     </appender>
 
