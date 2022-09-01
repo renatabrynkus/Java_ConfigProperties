@@ -40,6 +40,7 @@ public class WebsiteTitleTest extends BaseTest {
         String actualTitle = driver.getTitle();
         Log.logActualTitle(logger, actualTitle);
         assertThat(actualTitle).isEqualTo(expectedTitle);
+        Log.logTestPassed(logger, DataProvider.ONET_TEST_NAME);
     }
 
     @ParameterizedTest
@@ -55,6 +56,7 @@ public class WebsiteTitleTest extends BaseTest {
         String actualTitle = driver.getTitle();
         Log.logActualTitle(logger, actualTitle);
         assertThat(actualTitle).isEqualTo(expectedTitle);
+        Log.logTestPassed(logger, DataProvider.KOTUSZKOWO_TEST_NAME);
     }
 
     @ParameterizedTest
@@ -70,6 +72,7 @@ public class WebsiteTitleTest extends BaseTest {
         String actualTitle = driver.getTitle();
         Log.logActualTitle(logger, actualTitle);
         assertThat(actualTitle).isEqualTo(expectedTitle);
+        Log.logTestPassed(logger, DataProvider.FILMWEB_TEST_NAME);
     }
 
     @ParameterizedTest
@@ -85,5 +88,6 @@ public class WebsiteTitleTest extends BaseTest {
         String actualTitle = driver.getTitle();
         Log.logActualTitle(logger, actualTitle);
         assertThat(actualTitle).isEqualTo(expectedTitle);
+        Log.logTestPassed(logger, DataProvider.SELENIUM_TEST_NAME);
     }
 }
