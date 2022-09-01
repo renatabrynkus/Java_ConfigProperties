@@ -23,13 +23,14 @@ public class BaseTest {
     }
 
     @BeforeEach
-    protected  void setUp() {
+    protected void setUp() {
         driver = new ChromeDriver();
         Log.logDriverInitMessage(logger, driver);
     }
 
     @AfterEach
     protected void tearDown() {
-            driver.quit();
+        driver.quit();
+        Log.logDriverQuitMessage(logger, driver);
     }
 }
