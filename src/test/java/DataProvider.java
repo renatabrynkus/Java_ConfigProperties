@@ -13,7 +13,7 @@ public class DataProvider {
     static final String FILMWEB_TAG = "filmweb";
     static final String SELENIUM_TAG = "selenium";
 
-    static final String SII_PORTAL_TITLE = "Logowanie na konciee";
+    static final String SII_PORTAL_TITLE = "Logowanie na koncie";
     static final String ONET_TITLE = "Onet – Jesteś na bieżąco";
     static final String KOTUSZKOWO_TITLE = "Kotuszkowo- blog o kotach";
     static final String FILMWEB_TITLE = "Filmweb - filmy takie jak Ty!";
