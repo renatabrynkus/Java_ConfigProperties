@@ -30,7 +30,11 @@ public class BaseTest {
 
     @AfterEach
     protected void tearDown() {
-        driver.quit();
-        Log.logDriverQuitMessage(logger, driver);
+        if (driver != null) {
+            driver.quit();
+            Log.logDriverQuitSuccessMessage(logger, driver);
+        } else {
+            Log.logDriverQuitWarn(logger);
+        }
     }
 }
