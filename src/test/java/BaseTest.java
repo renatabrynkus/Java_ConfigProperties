@@ -1,4 +1,7 @@
+import config.BrowserEnvironment;
+import config.EnvironmentProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,30 +14,25 @@ import org.slf4j.LoggerFactory;
 import java.util.logging.Level;
 
 public class BaseTest {
-    private final Logger logger = LoggerFactory.getLogger(BaseTest.class);
+    private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
-    protected WebDriver driver;
+    protected static WebDriver driver;
+    private static BrowserEnvironment browserEnvironment;
+    public static EnvironmentProperties environmentProperties;
 
     @BeforeAll
     protected static void setDriver() {
-        WebDriverManager.chromedriver().setup();
         java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.OFF);
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY, "true");
+        environmentProperties = EnvironmentProperties.getInstance();
+        browserEnvironment = new BrowserEnvironment();
+        driver = browserEnvironment.getDriver();
+        logger.debug("Driver started succesfully");
     }
 
-    @BeforeEach
-    protected void setUp() {
-        driver = new ChromeDriver();
-        Log.logDriverInitMessage(logger, driver);
-    }
-
-    @AfterEach
-    protected void tearDown() {
-        if (driver != null) {
-            driver.quit();
-            Log.logDriverQuitSuccessMessage(logger, driver);
-        } else {
-            Log.logDriverQuitWarn(logger);
-        }
+    @AfterAll
+    static void tearDown() {
+        driver.quit();
+        logger.debug("Driver closed");
     }
 }
